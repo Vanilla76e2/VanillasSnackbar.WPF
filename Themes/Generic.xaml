@@ -1,0 +1,75 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:VanillasSnackbar.WPF.Controls"
+    xmlns:converters="clr-namespace:VanillasSnackbar.WPF.Converters">
+
+    <!-- Конвертеры internal -->
+    <converters:SnackbarTypeToBrushConverter x:Key="SnackbarTypeToBrushConverter"/>
+    <converters:SnackbarTypeToIconConverter x:Key="SnackbarTypeToIconConverter"/>
+
+    <!-- Цвета темы -->
+    <SolidColorBrush x:Key="SnackbarBackgroundBrush" Color="#333333"/>
+    <SolidColorBrush x:Key="SnackbarForegroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="SnackbarInfoBrush" Color="DeepSkyBlue"/>
+    <SolidColorBrush x:Key="SnackbarSuccessBrush" Color="Green"/>
+    <SolidColorBrush x:Key="SnackbarWarningBrush" Color="Orange"/>
+    <SolidColorBrush x:Key="SnackbarErrorBrush" Color="Red"/>
+    <SolidColorBrush x:Key="SnackbarTimerBrush" Color="Gray"/>
+
+    <Style TargetType="{x:Type local:SnackbarControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:SnackbarControl}">
+                    <Border CornerRadius="6"
+                            Background="{DynamicResource SnackbarBackgroundBrush}"
+                            Padding="10" Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Иконка -->
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding Message.Type,
+                                                      RelativeSource={RelativeSource TemplatedParent},
+                                                      Converter={StaticResource SnackbarTypeToIconConverter}}"
+                                       Margin="0,0,5,0"
+                                       VerticalAlignment="Center"
+                                       Foreground="{Binding Message.Type,
+                                                            RelativeSource={RelativeSource TemplatedParent},
+                                                            Converter={StaticResource SnackbarTypeToBrushConverter}}"
+                                       FontSize="28"/>
+
+                            <!-- Текст -->
+                            <TextBlock Grid.Column="1"
+                                       Text="{Binding Message.Text, RelativeSource={RelativeSource TemplatedParent}}"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource SnackbarForegroundBrush}"
+                                       FontSize="24"/>
+
+                            <!-- Кнопка закрытия -->
+                            <Button Content="×"
+                                    Command="{TemplateBinding CloseCommand}"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Foreground="{DynamicResource SnackbarForegroundBrush}"
+                                    Grid.Column="2"/>
+
+                            <!-- Полоска прогресса -->
+                            <Border x:Name="PART_TimerBar"
+                                    Height="3"
+                                    VerticalAlignment="Bottom"
+                                    Background="{DynamicResource SnackbarTimerBrush}"
+                                    Grid.ColumnSpan="3"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
