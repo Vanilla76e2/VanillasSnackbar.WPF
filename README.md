@@ -69,8 +69,11 @@ snackbarManager.ShowMessage(new SnackbarMessage("Файл успешно сох�
 ## 📸 Скриншоты
 
 **Режим Multiple**
+
 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHh6bGd0dGkwbmtubnlqMDc0a3M0NHhwZWp4N3FkMGg0MTFjbTc0YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oXGtmVNEZrVNGVCwEb/giphy.gif" alt="Vanillas-Snackbar-Multiple-Animation" border="0">
+
 **Режим Single**
+
 <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjB6bnMxdDJ3YTc2d3JrZGRrc2x2OWVmdjJrd2ptbThxYWduejQ3dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dFRR9cv51lA8NZmJ3K/giphy.gif" alt="Vanillas-Snackbar-Multiple-Animation" border="0">
 
 ---
